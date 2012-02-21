@@ -18,9 +18,9 @@
    version="1.0"
    sodipodi:docname="PLP_Architecture_v1.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="H:\MIPS_Architecture_wip.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-filename="C:\Users\gaalswy\Documents\Dropbox\ecen4243\PLP_Architecture_v1.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <defs
      id="defs4">
     <inkscape:path-effect
@@ -60,8 +60,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="508.0458"
-     inkscape:cy="381.45163"
+     inkscape:cx="493.83942"
+     inkscape:cy="343.27127"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -88,7 +88,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -97,6 +97,14 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,265)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect5700"
+       width="970"
+       height="580"
+       x="10"
+       y="115"
+       transform="translate(0,-265)" />
     <rect
        style="fill:#ffd5d5;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect5614"
@@ -144,7 +152,7 @@
        y="469"
        transform="translate(0,-265)" />
     <path
-       style="fill:#ff9955;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#ff9955;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 418.06967,375.12289 c 9.06235,-21.22062 12.82113,-3.23559 21.46272,-3.02292 4.0944,0.10077 9.57099,-9.67373 14.81231,-8.3634 7.77312,1.94328 5.28178,7.93873 5.13896,13.7039 -0.039,1.57325 11.14716,-1.33835 13.60313,-0.10077 2.03114,1.0235 2.7274,5.04497 4.33285,6.65043 1.63235,1.63234 -1.49123,8.44394 -2.2168,9.16952 -0.34408,0.34407 -4.03121,2.41702 -3.9298,2.61986 0.43234,0.86467 2.1877,5.24783 2.21681,7.75883 0.052,4.4824 -1.47233,7.96035 -7.85959,7.96035 -3.61769,0 -9.06202,-5.74203 -12.39397,-4.33286 -4.0503,1.71299 -5.50459,11.65696 -12.69626,8.06112 -6.05788,-3.02894 -3.48701,-4.89771 -7.75882,-9.16952 -1.18585,-1.18585 -6.96418,4.18744 -8.46417,4.93744 -2.97549,1.48774 -10.52076,-0.24283 -12.29321,-2.01528 -3.26883,-3.26884 3.11754,-12.90393 2.31757,-13.7039 -1.68348,-1.68348 -8.66431,-2.71785 -9.97563,-5.34049 -5.85808,-11.71617 2.48847,-14.25657 13.60314,-14.81231"
        id="path5497"
        inkscape:connector-curvature="0"
@@ -433,8 +441,8 @@
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;stroke-miterlimit:4;stroke-dasharray:none"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 205.39489,155.36409 11.16923,0"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 205.00001,155.36409 11.56412,0"
        id="path2549"
        inkscape:connector-curvature="0" />
     <path
