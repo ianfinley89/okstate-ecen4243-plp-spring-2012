@@ -29,6 +29,9 @@ parameter MUX_ALU_R = 2'd0;
 // ALUY_SRC Mux
 parameter MUX_IMM = 1'd1;
 parameter MUX_RFB = 1'd0;
+// Immediate zero/sign extend mux
+parameter MUX_ZE = 1'd0;
+parameter MUX_SE = 1'd1;
 
 //
 // OPCODES - keep sorted in hex order
