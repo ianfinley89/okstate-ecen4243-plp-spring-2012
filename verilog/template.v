@@ -56,7 +56,7 @@ assign output1 = {input1[30:0], input2[15:14]};
 assign is_load_type = ( opcode == LBU || opcode == LW );
 
 // or more complicated stuff
-assign output2 = 
+assign output2 =
   (c_foo && c_bar && !c_baz) ? input1 : input2;
 
 // How to work with a mux:
@@ -75,7 +75,8 @@ assign output3 =
 // get proper synthesis and no race conditions.
 always @(posedge clk or posedge rst)
 begin
-  if (rst) begin
+  if (rst)
+  begin
     some_value <= 0;
   end else begin
     some_value <= input2;
