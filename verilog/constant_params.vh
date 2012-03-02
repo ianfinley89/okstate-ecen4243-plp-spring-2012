@@ -11,7 +11,8 @@ parameter DMEM_READ  = 2'b10;
 parameter DMEM_WRITE = 2'b01;
 parameter DMEM_NOP   = 2'b00;
 
-// 
+
+//
 // MUX CONSTANTS
 //
 // JJR Mux
@@ -32,6 +33,7 @@ parameter MUX_RFB = 1'd0;
 // Immediate zero/sign extend mux
 parameter MUX_ZE = 1'd0;
 parameter MUX_SE = 1'd1;
+
 
 //
 // OPCODES - keep sorted in hex order
