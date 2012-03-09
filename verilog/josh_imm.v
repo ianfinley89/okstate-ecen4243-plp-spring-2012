@@ -2,14 +2,14 @@
 
 // MODULE
 module imm(
-ÿ // data
-ÿ input ÿ[15:0] imm16,
-ÿ // control
-ÿ input ÿc_imm_zse,
-ÿ // output
-ÿ output [31:0] imm32,
-ÿ output [ 1:0] lbu_byte
-ÿ );
+Ã¿ // data
+Ã¿ input Ã¿[15:0] imm16,
+Ã¿ // control
+Ã¿ input Ã¿c_imm_zse,
+Ã¿ // output
+Ã¿ output [31:0] imm32,
+Ã¿ output [ 1:0] lbu_byte
+Ã¿ );
 `include "constant_params.vh" // ` dummy
 
 // WIRES
@@ -18,14 +18,14 @@ wire [15:0] extension;
 // ASSIGNMENTS
 // XXX: Fix me.
 // hint: {M{N}} is N repeated M times
-// ÿ ÿ ÿ {5{foo[3:2]}} repeats bits 3 and 2 of foo 5 times
-// ÿ ÿ ÿ equivalent to {foo[3:2],foo[3:2],foo[3:2],foo[3:2],foo[3:2]}
+// Ã¿ Ã¿ Ã¿ {5{foo[3:2]}} repeats bits 3 and 2 of foo 5 times
+// Ã¿ Ã¿ Ã¿ equivalent to {foo[3:2],foo[3:2],foo[3:2],foo[3:2],foo[3:2]}
 // hint: X'bY is a signal X bits wide representing the binary number Y
-// ÿ ÿ ÿ 5'b10 represents 00010 in base 2.
+// Ã¿ Ã¿ Ã¿ 5'b10 represents 00010 in base 2.
 // so, replace sign_extend with something in the format of {M{N}}
 // and replace zero_extend with something in the format of X'bY
-assign extension = (c_imm_zse == MUX_SE) ? {16{imm16[15]}} : 16'b00;//{16{1}}=>16 bits of one's , 16'b00=>16 bits of Zeros
-ÿ
+assign extension = (c_imm_zse == MUX_SE) ? {16{imm16[15]}} : 16'b00;//{16{imm16[15]}}=>16 bits of MSB , 16'b00=>16 bits of Zeros
+Ã¿
 assign imm32 = { extension, imm16 };
 assign lbu_byte = imm16[1:0]; // our byte offset for LBU instruction
 
