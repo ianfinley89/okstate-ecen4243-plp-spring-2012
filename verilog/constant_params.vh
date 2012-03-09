@@ -92,23 +92,27 @@ parameter SLTU   = 6'h2b;
 //
 // ALU FUNCTIONS - keep sorted in hex order
 //
-parameter F_LSHIFT = 6'h00;
+parameter F_LSHIFT  = 6'h00;
 
-parameter F_RSHIFT = 6'h02;
+parameter F_RSHIFT  = 6'h02;
 
-parameter F_MULLO  = 6'h10; // 32x32 signed mult, return low 32
-parameter F_MULHI  = 6'h11; // 32x32 signed mult, return high 32
+parameter F_LSHIFTV = 6'h04;
 
-parameter F_ADD    = 6'h21;
+parameter F_RSHIFTV = 6'h06;
 
-parameter F_SUB    = 6'h23;
-parameter F_AND    = 6'h24;
-parameter F_OR     = 6'h25;
-parameter F_XOR    = 6'h26;
-parameter F_NOR    = 6'h27;
+parameter F_MULLO   = 6'h10; // 32x32 signed mult, return low 32
+parameter F_MULHI   = 6'h11; // 32x32 signed mult, return high 32
 
-parameter F_CMP_S  = 6'h2a; // x < y signed
-parameter F_CMP_U  = 6'h2b; // x < y unsigned
+parameter F_ADD     = 6'h21;
 
-parameter F_NEQ    = 6'h3a; // XXX: make sure these fx codes are ok
-parameter F_EQ     = 6'h3b; // XXX: make sure these fx codes are ok
+parameter F_SUB     = 6'h23;
+parameter F_AND     = 6'h24;
+parameter F_OR      = 6'h25;
+parameter F_XOR     = 6'h26;
+parameter F_NOR     = 6'h27;
+
+parameter F_CMP_S   = 6'h2a; // x < y signed
+parameter F_CMP_U   = 6'h2b; // x < y unsigned
+
+parameter F_NEQ     = 6'h3a; // XXX: make sure these fx codes are ok
+parameter F_EQ      = 6'h3b; // XXX: make sure these fx codes are ok
