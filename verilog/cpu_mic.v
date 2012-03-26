@@ -57,10 +57,112 @@ wire [1:0] c_wb_src;    // which data source to use for writeback data
 wire [1:0] c_dmem_rw;   // zero/one-hot encoding for read/write enable of data
 
 // assignments
-wire [4:0]         shamtv    = rfa[4:0];
-wire [29:0]        imm30     = imm32[29:0];
-wire [`W_DATA-1:0] jra       = rfa;
-wire [`W_DATA-1:0] data_word = dmem_in;
+wire [4:0]         shamtv    = rfa[4:0];    // shift amount variable
+wire [29:0]        imm30     = imm32[29:0]; // immediate of 30 bits
+wire [`W_DATA-1:0] jra       = rfa;         // jump return address
+wire [`W_DATA-1:0] data_word = dmem_in;     // data read from the data memory
+
+
+// output assignments
+assign o_data_addr = alu_r ;  
+assign o_data = rfb ;         
+assign o_data_rw = c_dmem_rw ;
+assign o_inst_addr = imem_addr;
+
+// SUBMODULES
+imm imm(
+  // data
+  .imm16(imm16),
+  // control
+  .c_imm_zse(c_imm_zse),
+  // output
+  .imm32(imm32),
+  .lbu_byte(lbu_byte)
+  );
+
+control control(
+  // control
+  .stall(stall),
+  // input
+  .opcode(opcode),
+  .shamt(shamt),
+  .func(func),
+  .shamtv(shamtv),
+  // output
+  .alu_func(alu_func),
+  .alu_shamt(alu_shamt),
+  .func_movz(func_movz),
+  .c_rf_we(c_rf_we),
+  .c_wb_dest(c_wb_dest),
+  .c_imm_zse(c_imm_zse),
+  .c_aluy_src(c_aluy_src),
+  .c_dmem_rw(c_dmem_rw),
+  .c_jjr(c_jjr),
+  .c_b(c_b),
+  .c_j(c_j),
+  .c_wb_src(c_wb_src)
+  );
+
+alu alu(
+  // data
+  .rfa(rfa),
+  .rfb(rfb),
+  .imm32(imm32),
+  // control
+  .c_aluy_src(c_aluy_src),
+  .alu_func(alu_func),
+  .alu_shamt(alu_shamt),
+  // output
+  .alu_r_z(alu_r_z),
+  .alu_r(alu_r)
+  );
+
+rf rf(
+  .clk(clk),
+  // data
+  .rs(rs),
+  .rt(rt),
+  .rd(rd),
+  .wb_data(wb_data),
+  // control
+  .func_movz(func_movz),
+  .c_wb_dest(c_wb_dest),
+  .c_rf_we(c_rf_we),
+  // output
+  .rfa(rfa),
+  .rfb(rfb)
+  );
+
+pc pc(
+  .clk(clk),
+  // data
+  .imm30(imm30),
+  .jra(jra),
+  .jaddr(jaddr),
+  // control
+  .stall(stall),
+  .c_jjr(c_jjr),
+  .c_b(c_b),
+  .c_j(c_j),
+  .alu_r_z(alu_r_z),
+  // output
+  .imem_addr(imem_addr),
+  .jalra(jalra),
+
+  .rst(rst)
+  );
+
+wb wb(
+  // data
+  .data_word(data_word),
+  .jalra(jalra),
+  .alu_r(alu_r),
+  // control
+  .lbu_byte(lbu_byte),
+  .c_wb_src(c_wb_src),
+  // output
+  .wb_data(wb_data)
+  );
 
 
 endmodule
