@@ -24,8 +24,29 @@ module control(
 `include "constant_params.vh"
 
 
+assign alu_func =
+  (opcode==R_TYPE) ?
+    ( (func==MOVZ) ? F_OR : func ) :
+  (opcode==BEQ   ) ? F_NEQ :
+  (opcode==BNE   ) ? F_EQ  :
+  (opcode==ADDIU ) ? F_ADD :
+  (opcode==SLTI  ) ? F_CMP_S :
+  (opcode==SLTIU ) ? F_CMP_U :
+  (opcode==ANDI  ) ? F_ADD :
+  (opcode==ORI   ) ? F_OR :
+  (opcode==LUI   ) ? F_LSHIFT :
+  (opcode==LW    ) ? F_ADD :
+  (opcode==LBU   ) ? F_ADD :
+  (opcode==SW    ) ? F_ADD : 
+                     F_LSHIFT;
 
+assign alu_shamt =
+  (opcode==R_TYPE &&
+    (func == SRLV || func == SLLV)) ? shamtv :
+  (opcode==LUI) ? 5'd16 :
+                  shamt;
 
+  
 assign func_movz = (opcode == R_TYPE && func == MOVZ);
 
 assign c_rf_we =
@@ -52,40 +73,32 @@ assign c_aluy_src =
    opcode==BNE)  ? MUX_RFB :
                    MUX_SE  ;
 
-assign c_dmem_rw =
+assign c_dmem_rw = 
+  (opcode==SW )               ? DMEM_WRITE:
+  (opcode==LW || opcode==LBU) ? DMEM_READ:
+                                DMEM_NOP;
 
-//  when can you
+assign c_wb_src = 
+  (opcode==LW   ) ? MUX_DWORD:
+  (opcode==JAL || 
+    (opcode==R_TYPE && func==JALR)
+                ) ? MUX_JALRA:
+  (opcode==LBU  ) ? MUX_DBYTE:
+                  ? MUX_ALU_R;
 
-//- data memory read/write control
-//
-//    two bits
-//    zero/one hot encoding c_drw[1] is read bit, c_drw[0] is write bit
-//    only the read OR the write signal is asserted at any one time, otherwise neither for a nop
-//    read for SW
-//    write for LW, LBU
-//    don't let both bits be set 
-
-assign c_wb_src =
-
-//- writeback register source MUX
-//
-//    2 bits
-//    3 sources at this time, will have a 4th if we add LBU
-//    sources: alu_r (alu result, most instructions), dmem_in (data memory read (lw, lbu)), jalra (jump and link register address (jal, jalr)) 
-
-assign c_b & c_j =
-
-//    boolean signals that are asserted for branch and jump instructions, respectively
-//    branch: beq, bne
-//    jump: j, jr, jal, jalr 
+assign c_b = (opcode==BEQ || opcode==BNE);
+assign c_j = 
+  (opcode==J    ||
+   opcode==JAL  || 
+    (opcode== R_TYPE && 
+      (func==JR || func==JALR)
+    )
+  );
 
 assign c_jjr =
-
-//- jaddr source mux
-//
-//    1 bit
-//    asserted to use jra (rfa, rf[$ra], rf[31]) for JR, JALR instructions
-//    deasserted to use pc_4+(jaddr<<2) for J, JAL instructions 
+ (opcode== R_TYPE && 
+      (func==JR || func==JALR) ) ? MUX_JRA:
+  (opcode==J || opcode==JAL) ? MUX_JADDR : MUX_JADDR; 
 
 
 
