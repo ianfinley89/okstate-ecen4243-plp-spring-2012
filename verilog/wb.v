@@ -33,7 +33,7 @@ assign data_byte =
 
 // MUX_DATA_BYTE_
 
-assign data_byte_ze = [24b0, data_byte]; // NOTE: no dependence on W_DATA
+assign data_byte_ze = {24b0, data_byte}; // NOTE: no dependence on W_DATA
 assign wb_data =
  (c_wb_src== MUX_DBYTE) ? data_byte_ze:
  (c_wb_src== MUX_JALRA) ? jalra:
