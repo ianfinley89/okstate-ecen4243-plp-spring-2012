@@ -25,15 +25,15 @@ wire [`W_DATA-1:0] data_byte_ze;
 // MUX_DATA_BYTE_1
 assign data_byte =
   (lbu_byte== 2'd0) ? data_word[7:0]:
-  (lbu_byte== 2'd1) ? data_word[15:8]:
-  (lbu_byte== 2'd2) ? data_word[23:16]:
-  (lbu_byte== 2'd3) ? data_word[31:24]:
+  (lbu_byte== 2'd1) ? data_word[15:8]:
+  (lbu_byte== 2'd2) ? data_word[23:16]:
+  (lbu_byte== 2'd3) ? data_word[31:24]:
                       data_word[7:0];
   
 
 // MUX_DATA_BYTE_
 
-assign data_byte_ze = {24'b0, data_byte}; // NOTE: no dependence on W_DATA
+assign data_byte_ze = {24'b0, data_byte}; // NOTE: no dependence on W_DATA
 assign wb_data =
  (c_wb_src== MUX_DBYTE) ? data_byte_ze:
  (c_wb_src== MUX_JALRA) ? jalra:
