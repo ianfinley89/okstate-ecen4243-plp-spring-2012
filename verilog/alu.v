@@ -42,7 +42,7 @@ assign alu_r =
 (alu_func==F_NOR    ) ? ~( x | y ):
 (alu_func==F_CMP_S  ) ? $signed(x) < $signed(y):
 (alu_func==F_CMP_U  ) ? x < y:
-(alu_func==F_NEQ    ) ? x |= y:
+(alu_func==F_NEQ    ) ? x != y:
 (alu_func==F_EQ     ) ? x == y:
                         ZERO_DATA; // default value
 assign alu_r_z = ~|alu_r;
