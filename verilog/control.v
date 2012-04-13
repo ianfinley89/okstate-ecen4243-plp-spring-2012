@@ -84,7 +84,7 @@ assign c_wb_src =
     (opcode==R_TYPE && func==JALR)
                 ) ? MUX_JALRA:
   (opcode==LBU  ) ? MUX_DBYTE:
-                  ? MUX_ALU_R;
+                    MUX_ALU_R;
 
 assign c_b = (opcode==BEQ || opcode==BNE);
 assign c_j = 

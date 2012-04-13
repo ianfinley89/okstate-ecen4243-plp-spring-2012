@@ -29,9 +29,9 @@ assign mul64 = $signed(x) * $signed(y);
 
 assign alu_r =
 (alu_func==F_LSHIFT ||
- alu_func==F_LSHIFTV) ? y << shamt:
+ alu_func==F_LSHIFTV) ? y << alu_shamt:
 (alu_func==F_RSHIFT ||
- alu_func==F_RSHIFTV) ? y >> shamt:
+ alu_func==F_RSHIFTV) ? y >> alu_shamt:
 (alu_func==F_MULLO  ) ? mul64[`W_DATA-1:0]:
 (alu_func==F_MULHI  ) ? mul64[`W_DATA*2-1:`W_DATA]:
 (alu_func==F_ADD    ) ? x + y:
