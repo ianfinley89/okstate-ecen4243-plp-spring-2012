@@ -1,0 +1,24 @@
+==                             10ns after reset clear ==
+INPUTS stall: 0 imm30: 00000000 jra: 00000000 jaddr: 0000000
+ alu_r_z: 0 c_jjr: 0 c_b: 0 c_j: 0
+OUTPUTS imem_addr: 00000014 jalra: 0000001c
+==                                              stall ==
+INPUTS stall: 1 imm30: 00000000 jra: 00000000 jaddr: 0000000
+ alu_r_z: 0 c_jjr: 0 c_b: 0 c_j: 0
+OUTPUTS imem_addr: 00000014 jalra: 0000001c
+==       branching with imm30 = 0xFF00 with alu_r_z=1 ==
+INPUTS stall: 0 imm30: 0000ff00 jra: 00000000 jaddr: 0000000
+ alu_r_z: 1 c_jjr: 0 c_b: 1 c_j: 0
+OUTPUTS imem_addr: 0003fc18 jalra: 0003fc20
+==       branching with imm30 = 0xFF00 with alu_r_z=0 ==
+INPUTS stall: 0 imm30: 0000ff00 jra: 00000000 jaddr: 0000000
+ alu_r_z: 0 c_jjr: 0 c_b: 1 c_j: 0
+OUTPUTS imem_addr: 0003fc1c jalra: 0003fc24
+==                               jumping with jaddr26 ==
+INPUTS stall: 0 imm30: 0000ff00 jra: 00000000 jaddr: 0000003
+ alu_r_z: 0 c_jjr: 0 c_b: 0 c_j: 1
+OUTPUTS imem_addr: 0000000c jalra: 00000014
+==                                jumping to ade3ff00 ==
+INPUTS stall: 0 imm30: 0000ff00 jra: ade3ff00 jaddr: 0000003
+ alu_r_z: 0 c_jjr: 1 c_b: 0 c_j: 1
+OUTPUTS imem_addr: ade3ff00 jalra: ade3ff08
