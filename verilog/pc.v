@@ -60,7 +60,7 @@ assign jaddr =
 
 // next_pc mux
 assign next_pc =
-  (c_b && !alu_r_z) ? baddr :
+  (c_b && alu_r_z) ? baddr :
   (c_j) ? jaddr :
           pc_4  ;
 
