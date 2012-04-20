@@ -117,7 +117,8 @@ module alu_test;
     alu_func = F_CMP_U;
     status("cmp unsigned");
 
-    rfb = 32'hfffffffb;
+    alu_func = F_CMP_S;
+    rfa = 32'hfffffffb;
     status("cmp signed");
 
     alu_func = F_CMP_U;
