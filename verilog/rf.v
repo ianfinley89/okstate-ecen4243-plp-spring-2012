@@ -26,7 +26,7 @@ wire [`W_RFADDR-1:0] wr;                             // It is the result from th
 wire rfb_z; 
 
 // Assignments
-assign rfb_z = ~|rf[rt];                             // NORS the bits in rfb
+assign rfb_z = (rt == SPR_Z) ? 1'b1 : ~|rf[rt];                             // NORS the bits in rfb
 assign we = (func_movz ? (rfb_z) : 1) && c_rf_we;    // Checks the condition func_movz, assigns rfb_z to we
                                                      // if true and 1 if false
 assign wr =                                          // Choses the write to register based
