@@ -32,7 +32,7 @@ assign alu_func =
   (opcode==ADDIU ) ? F_ADD :
   (opcode==SLTI  ) ? F_CMP_S :
   (opcode==SLTIU ) ? F_CMP_U :
-  (opcode==ANDI  ) ? F_ADD :
+  (opcode==ANDI  ) ? F_AND :
   (opcode==ORI   ) ? F_OR :
   (opcode==LUI   ) ? F_LSHIFT :
   (opcode==LW    ) ? F_ADD :
@@ -64,8 +64,8 @@ assign c_wb_dest =
 
 assign c_imm_zse =
   (opcode==ANDI || 
-   opcode==ORI) ? 0 :
-                  1 ;
+   opcode==ORI) ? 1'b0 :
+                  1'b1 ;
 
 assign c_aluy_src =
   (opcode==R_TYPE || 
@@ -84,7 +84,7 @@ assign c_wb_src =
     (opcode==R_TYPE && func==JALR)
                 ) ? MUX_JALRA:
   (opcode==LBU  ) ? MUX_DBYTE:
-                  ? MUX_ALU_R;
+                    MUX_ALU_R;
 
 assign c_b = (opcode==BEQ || opcode==BNE);
 assign c_j = 
